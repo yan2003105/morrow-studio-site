@@ -427,6 +427,19 @@
     }
     .email-link:hover, .email-link:focus-visible { color: var(--signal-ink); background: transparent; }
 
+    .quote-link {
+      display: inline-block;
+      background: var(--signal);
+      color: var(--signal-ink);
+      padding: 17px 28px;
+      border: 1px solid var(--signal);
+      text-decoration: none;
+      font: 500 .8rem/1 var(--mono);
+      letter-spacing: .06em;
+      transition: color .22s ease, background-color .22s ease;
+    }
+    .quote-link:hover, .quote-link:focus-visible { color: var(--signal); background: transparent; }
+
     footer {
       padding-block: 34px 46px;
       display: grid;
@@ -560,8 +573,9 @@
   <nav class="topline shell" aria-label="Primary navigation">
     <a href="#work">Selected work</a>
     <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
     <a href="#process">Process</a>
-    <a class="start-link" href="mailto:hello@morrowstudio.dpdns.org?subject=Morrow%20Studio%20project%20inquiry">Start a project</a>
+    <a class="start-link" href="mailto:hello@morrowstudio.dpdns.org?subject=Project%20quote%20request&amp;body=Hi%20Morrow%20Studio%2C%0D%0A%0D%0AMy%20product%3A%20%0D%0AWhat%20I%20need%3A%20%0D%0AMy%20timeline%3A%20%0D%0A%0D%0AThanks%21">Get a Project Quote</a>
   </nav>
 
   <main>
@@ -698,12 +712,24 @@
       </div>
     </section>
 
+    <section id="pricing" class="shell" aria-labelledby="pricing-title">
+      <header class="section-head">
+        <div class="section-number">04 / PRICING</div>
+        <div>
+          <h2 id="pricing-title">Product films from $150.</h2>
+          <p>A finished 15–30 second film, directed and produced around your product. Before we start, you get a fixed quote — film length, revision rounds and delivery date confirmed up front. No surprises.</p>
+          <p><a class="quote-link" href="mailto:hello@morrowstudio.dpdns.org?subject=Project%20quote%20request&amp;body=Hi%20Morrow%20Studio%2C%0D%0A%0D%0AMy%20product%3A%20%0D%0AWhat%20I%20need%3A%20%0D%0AMy%20timeline%3A%20%0D%0A%0D%0AThanks%21">Get a Project Quote</a></p>
+        </div>
+      </header>
+    </section>
+
     <section id="contact" class="contact" aria-labelledby="contact-title">
       <div class="shell contact-grid">
         <h2 id="contact-title">Have a product worth pausing for?</h2>
         <div class="contact-side">
           <p>Tell us about your product, your goal and what you need—we’ll shape the scope from there.</p>
-          <a class="email-link" href="mailto:hello@morrowstudio.dpdns.org?subject=Morrow%20Studio%20project%20inquiry">hello@morrowstudio.dpdns.org</a>
+          <a class="email-link" href="mailto:hello@morrowstudio.dpdns.org?subject=Project%20quote%20request&amp;body=Hi%20Morrow%20Studio%2C%0D%0A%0D%0AMy%20product%3A%20%0D%0AWhat%20I%20need%3A%20%0D%0AMy%20timeline%3A%20%0D%0A%0D%0AThanks%21">Get a Project Quote</a>
+          <p class="price">Product films from $150 · hello@morrowstudio.dpdns.org</p>
         </div>
       </div>
     </section>
