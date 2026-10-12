@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Morrow Studio creates short-form product films, launch visuals and social assets for indie and DTC brands.">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>Morrow Studio — Short-form product films</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --surface: #0d0d0d;
+      --surface-2: #151515;
+      --ink: #f5f4ef;
+      --muted: #a2a099;
+      --line: #2a2a28;
+      --signal: #dfff45;
+      --signal-ink: #0b0b08;
+      --shadow: rgba(0,0,0,.62);
+      --max: 1320px;
+      --side: clamp(20px, 4vw, 64px);
+      --display: "Archivo", "Helvetica Neue", sans-serif;
+      --mono: "IBM Plex Mono", monospace;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #090909;
+        --surface: #111110;
+        --surface-2: #191918;
+        --ink: #f8f7f2;
+        --muted: #aaa8a1;
+        --line: #30302e;
+        --signal: #d7f43a;
+        --signal-ink: #0b0c06;
+        --shadow: rgba(0,0,0,.5);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    img, video { display: block; max-width: 100%; }
+    figure, h1, h2, h3, p { margin: 0; }
+    section { scroll-margin-top: 76px; }
+    :focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
+
+    .shell {
+      width: min(100%, var(--max));
+      margin-inline: auto;
+      padding-inline: var(--side);
+    }
+
+    .topline {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(22px, 2.8vw, 40px);
+      border-bottom: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .075em;
+    }
+    .topline a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: color .22s ease, background-color .22s ease;
+    }
+    .topline a:hover, .topline a:focus-visible { color: var(--ink); }
+    .topline .start-link {
+      color: var(--signal-ink);
+      background: var(--signal);
+      padding: 11px 16px;
+      border: 1px solid var(--signal);
+    }
+    .topline .start-link:hover, .topline .start-link:focus-visible {
+      color: var(--signal);
+      background: transparent;
+    }
+
+    .hero {
+      min-height: min(880px, calc(100svh - 76px));
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(360px, .82fr);
+      align-items: stretch;
+      position: relative;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-copy {
+      padding: clamp(76px, 8vw, 116px) clamp(42px, 6vw, 92px) clamp(68px, 7vw, 92px) var(--side);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: clamp(68px, 8vh, 108px);
+    }
+    .wordmark {
+      font-family: var(--display);
+      font-size: clamp(.82rem, 1.2vw, 1rem);
+      font-weight: 500;
+      letter-spacing: .62em;
+      line-height: 1;
+      color: var(--muted);
+    }
+    .hero h1 {
+      max-width: 760px;
+      font-size: clamp(3.7rem, 7.2vw, 7.1rem);
+      font-weight: 300;
+      letter-spacing: -.058em;
+      line-height: .91;
+      text-wrap: balance;
+    }
+    .hero h1 em {
+      color: var(--signal);
+      font-style: normal;
+    }
+    .hero-bottom {
+      margin-top: auto;
+      max-width: 560px;
+    }
+    .lede {
+      font-size: clamp(1.05rem, 1.45vw, 1.3rem);
+      line-height: 1.58;
+      max-width: 520px;
+      letter-spacing: -.012em;
+    }
+    .hero-media {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      border-left: 1px solid var(--line);
+      background: var(--surface);
+      isolation: isolate;
+    }
+    .hero-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.005);
+    }
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(5,5,5,.12), transparent 24%), linear-gradient(0deg, rgba(5,5,5,.18), transparent 42%);
+    }
+    .hero-media::after {
+      content: "01 / 08";
+      position: absolute;
+      z-index: 2;
+      right: 20px;
+      top: 20px;
+      padding: 8px 10px;
+      background: var(--bg);
+      color: var(--ink);
+      font: 500 .66rem/1 var(--mono);
+      letter-spacing: .1em;
+    }
+    .hero-caption {
+      position: absolute;
+      z-index: 2;
+      inset: auto 0 0;
+      padding: 64px 22px 22px;
+      color: #fff;
+      background: linear-gradient(to top, rgba(0,0,0,.82), transparent);
+      font: 400 .68rem/1.35 var(--mono);
+      letter-spacing: .075em;
+    }
+
+    .ticker {
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      padding: 15px 0;
+      font: 400 .72rem/1 var(--mono);
+      letter-spacing: .08em;
+      color: var(--muted);
+      animation: drift 28s linear infinite;
+    }
+    .ticker-track span { white-space: nowrap; }
+    .ticker-track b { color: var(--signal); padding-inline: 20px; }
+    @keyframes drift { to { transform: translateX(-50%); } }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(150px, .38fr) 1fr;
+      gap: clamp(44px, 7vw, 108px);
+      padding-block: clamp(84px, 9vw, 128px) clamp(42px, 5vw, 64px);
+      align-items: start;
+    }
+    .section-number {
+      padding-top: .55em;
+      font: 400 .68rem/1.4 var(--mono);
+      color: var(--muted);
+      letter-spacing: .085em;
+    }
+    .section-head h2 {
+      font-size: clamp(2.7rem, 5vw, 5.35rem);
+      font-weight: 300;
+      letter-spacing: -.05em;
+      line-height: .98;
+      max-width: 820px;
+    }
+    .section-head p {
+      color: var(--muted);
+      max-width: 560px;
+      margin-top: 24px;
+      font-size: .98rem;
+      line-height: 1.7;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: clamp(14px, 2vw, 28px);
+      row-gap: clamp(52px, 6vw, 78px);
+      margin-bottom: clamp(104px, 11vw, 150px);
+    }
+    .film {
+      min-width: 0;
+      transition: transform .45s cubic-bezier(.22,.75,.2,1);
+    }
+    .film:nth-child(3n + 2) { transform: none; }
+    .film-visual {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+    .film--landscape { grid-column: span 2; }
+    .film--landscape .film-visual { aspect-ratio: 16 / 9; }
+    .film video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #111;
+      transition: transform .75s cubic-bezier(.22,.75,.2,1), filter .35s ease;
+    }
+    .play {
+      position: absolute;
+      inset: 0;
+      border: 0;
+      width: 100%;
+      height: 100%;
+      padding: 18px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      background: linear-gradient(to top, rgba(0,0,0,.58) 0, rgba(0,0,0,0) 42%);
+      color: #fff;
+      cursor: pointer;
+      transition: background-color .3s ease;
+    }
+    .play[hidden] { display: none; }
+    .play-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 40px;
+      padding: 10px 13px;
+      background: rgba(4,4,4,.84);
+      border: 1px solid rgba(255,255,255,.26);
+      font: 500 .65rem/1 var(--mono);
+      letter-spacing: .1em;
+      transition: color .25s ease, background-color .25s ease, border-color .25s ease;
+    }
+    .play-mark::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 9px solid var(--signal);
+      border-block: 6px solid transparent;
+    }
+    .film-meta {
+      min-height: 94px;
+      padding: 16px 2px 8px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+      border-top: 0;
+    }
+    .film h3 {
+      font-size: 1.02rem;
+      font-weight: 400;
+      letter-spacing: -.015em;
+    }
+    .film-meta p {
+      color: var(--muted);
+      font: 400 .7rem/1.5 var(--mono);
+      margin-top: 7px;
+    }
+    .film-index {
+      padding-top: 4px;
+      color: var(--muted);
+      font: 400 .66rem/1 var(--mono);
+    }
+    @media (hover: hover) {
+      .film:hover .film-visual video { transform: scale(1.025); filter: brightness(1.04); }
+      .film:hover .play-mark { color: var(--signal-ink); background: var(--signal); border-color: var(--signal); }
+    }
+
+    .offer {
+      border-block: 1px solid var(--line);
+      background: var(--surface);
+    }
+    .service-list { border-top: 1px solid var(--line); }
+    .service-row {
+      display: grid;
+      grid-template-columns: 64px minmax(260px, 1fr) minmax(220px, 320px);
+      gap: clamp(24px, 4vw, 64px);
+      align-items: baseline;
+      padding: clamp(26px, 3vw, 38px) 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding-left .3s ease, color .3s ease;
+    }
+    .service-row:last-child { border-bottom: 0; }
+    .service-row .num { font: 400 .7rem/1 var(--mono); color: var(--muted); }
+    .service-row h3 { font-size: clamp(1.65rem, 2.7vw, 2.75rem); font-weight: 300; letter-spacing: -.035em; }
+    .service-row p { color: var(--muted); font-size: .86rem; line-height: 1.55; }
+    @media (hover: hover) {
+      .service-row:hover { padding-left: 10px; color: var(--signal); }
+      .service-row:hover p { color: var(--ink); }
+    }
+
+    .audience {
+      padding-block: clamp(108px, 13vw, 180px);
+    }
+    .audience-copy { max-width: 850px; }
+    .audience h2 {
+      font-size: clamp(2.7rem, 5.2vw, 5.35rem);
+      line-height: .98;
+      font-weight: 300;
+      letter-spacing: -.05em;
+    }
+    .audience-copy > p { color: var(--muted); max-width: 520px; margin-top: 28px; line-height: 1.7; }
+    .sector-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .sector-list span {
+      border: 1px solid var(--line);
+      padding: 8px 11px;
+      font: 400 .72rem/1 var(--mono);
+      letter-spacing: .05em;
+    }
+    .process { border-top: 1px solid var(--line); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-block: 1px solid var(--line);
+      margin-bottom: clamp(118px, 14vw, 188px);
+    }
+    .step {
+      min-height: 310px;
+      padding: 24px 22px 26px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .step:last-child { border-right: 0; }
+    .step .num { color: var(--signal); font: 500 .72rem/1 var(--mono); }
+    .step h3 { font-size: clamp(1.55rem, 2.35vw, 2.35rem); font-weight: 300; letter-spacing: -.035em; }
+    .step p { color: var(--muted); font-size: .83rem; line-height: 1.6; max-width: 24ch; }
+
+    .contact {
+      background: var(--signal);
+      color: var(--signal-ink);
+      padding-block: clamp(84px, 11vw, 138px);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .42fr);
+      gap: clamp(58px, 9vw, 132px);
+      align-items: end;
+    }
+    .contact h2 {
+      font-size: clamp(3.25rem, 7.6vw, 7.8rem);
+      font-weight: 300;
+      letter-spacing: -.062em;
+      line-height: .9;
+      max-width: 850px;
+    }
+    .contact-side { display: grid; gap: 30px; }
+    .contact-side p { max-width: 36ch; line-height: 1.6; }
+    .contact .price {
+      font: 500 .75rem/1.4 var(--mono);
+      letter-spacing: .05em;
+      border-top: 1px solid rgba(10,10,6,.35);
+      padding-top: 14px;
+    }
+    .email-link {
+      display: block;
+      width: 100%;
+      background: var(--signal-ink);
+      color: var(--signal);
+      padding: 18px 20px;
+      border: 1px solid var(--signal-ink);
+      text-decoration: none;
+      font: 500 clamp(.78rem, 1.2vw, .92rem)/1 var(--mono);
+      text-align: center;
+      transition: color .22s ease, background-color .22s ease;
+    }
+    .email-link:hover, .email-link:focus-visible { color: var(--signal-ink); background: transparent; }
+
+    footer {
+      padding-block: 34px 46px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      color: var(--muted);
+      font: 400 .7rem/1.55 var(--mono);
+    }
+    footer p { max-width: 750px; }
+    footer a { color: var(--ink); text-underline-offset: 3px; }
+
+    .sound-toggle {
+      position: fixed;
+      z-index: 20;
+      right: max(18px, env(safe-area-inset-right));
+      bottom: max(18px, env(safe-area-inset-bottom));
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      color: var(--muted);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 8px 28px var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+    .sound-toggle:hover, .sound-toggle:focus-visible { color: var(--ink); border-color: var(--muted); }
+    .sound-toggle[aria-pressed="true"] { background: var(--signal); color: var(--signal-ink); border-color: var(--signal); }
+    .sound-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 18px;
+    }
+    .sound-icon i {
+      display: block;
+      width: 2px;
+      height: 5px;
+      background: currentColor;
+      transition: height .18s ease;
+    }
+    .sound-toggle[aria-pressed="true"] .sound-icon i:nth-child(1) { height: 8px; }
+    .sound-toggle[aria-pressed="true"] .sound-icon i:nth-child(2) { height: 16px; }
+    .sound-toggle[aria-pressed="true"] .sound-icon i:nth-child(3) { height: 11px; }
+    .sound-toggle[aria-pressed="true"] .sound-icon i:nth-child(4) { height: 18px; }
+    .sound-toggle[aria-pressed="true"] .sound-icon i:nth-child(5) { height: 7px; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-copy { min-height: 590px; }
+      .hero-media { min-height: min(72svh, 700px); border-left: 0; border-top: 1px solid var(--line); }
+      .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 72px; }
+      .film:nth-child(3n + 2) { transform: none; }
+      .film:nth-child(even) { transform: translateY(38px); }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .step:nth-child(2) { border-right: 0; }
+      .step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-side { max-width: 520px; }
+    }
+
+    @media (max-width: 620px) {
+      :root { --side: 20px; }
+      .topline { min-height: 68px; justify-content: space-between; gap: 14px; overflow: hidden; font-size: .66rem; }
+      .topline a { min-height: 44px; display: inline-flex; align-items: center; }
+      .topline a:nth-child(2) { display: none; }
+      .topline .start-link { padding-inline: 13px; }
+      .hero-copy { min-height: 500px; padding: 56px var(--side) 44px; gap: 50px; }
+      .wordmark { font-size: .74rem; letter-spacing: .5em; }
+      .hero h1 { font-size: clamp(3.05rem, 15.2vw, 4.25rem); line-height: .92; letter-spacing: -.052em; }
+      .lede { font-size: 1rem; line-height: 1.62; max-width: 34ch; }
+      .hero-media {
+        min-height: min(62svh, 560px);
+        margin: 0 var(--side) var(--side);
+        border: 1px solid var(--line);
+      }
+      .ticker-track { animation-duration: 24s; }
+      .section-head { grid-template-columns: 1fr; gap: 18px; padding-block: 76px 38px; }
+      .section-number { padding-top: 0; }
+      .section-head h2 { font-size: clamp(2.45rem, 12.5vw, 3.45rem); line-height: 1; }
+      .section-head p { font-size: .94rem; margin-top: 20px; }
+      .work-grid { grid-template-columns: 1fr; gap: 42px; margin-bottom: 92px; }
+      .film, .film:nth-child(even), .film:nth-child(3n + 2) { transform: none; margin-inline: 0; }
+      .film--landscape { grid-column: span 1; }
+      .film-meta { min-height: 90px; padding-top: 15px; }
+      .play { padding: 14px; }
+      .play-mark { min-height: 44px; }
+      .service-row { grid-template-columns: 38px 1fr; gap: 12px; align-items: start; padding-block: 30px; }
+      .service-row p { grid-column: 2; }
+      .audience { padding-block: 88px; }
+      .audience h2 { font-size: clamp(2.55rem, 13vw, 3.55rem); }
+      .sector-list { margin-top: 24px; }
+      .steps { grid-template-columns: 1fr; margin-bottom: 92px; }
+      .step { min-height: 210px; padding: 22px 4px 24px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .step:last-child { border-bottom: 0; }
+      .contact { padding-block: 72px; }
+      .contact-grid { gap: 38px; }
+      .contact h2 { font-size: clamp(3rem, 15vw, 4.3rem); line-height: .92; }
+      .email-link { min-height: 50px; display: grid; place-items: center; }
+      footer { grid-template-columns: 1fr; padding-bottom: 80px; }
+    }
+
+    @keyframes enter-soft {
+      from { transform: translateY(18px); }
+      to { transform: translateY(0); }
+    }
+    @supports (animation-timeline: view()) {
+      .section-head > *,
+      .film-visual,
+      .audience > *,
+      .service-row,
+      .step {
+        animation: enter-soft linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 34%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ticker-track { animation: none; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topline shell" aria-label="Primary navigation">
+    <a href="#work">Selected work</a>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a class="start-link" href="mailto:yan2003105@gmail.com?subject=Morrow%20Studio%20project%20inquiry">Start a project</a>
+  </nav>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="wordmark">MORROW</div>
+        <h1 id="hero-title">Make the product <em>hard to leave.</em></h1>
+        <div class="hero-bottom">
+          <p class="lede">Short-form product films for indie and DTC brands that need to look considered, clear and worth the pause.</p>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/posters/poster-01.jpg" aria-label="Jewelry craftsmanship concept film">
+          <source src="assets/videos/work-01.mp4" type="video/mp4">
+        </video>
+        <figcaption class="hero-caption">JEWELRY CRAFTSMANSHIP — CONCEPT FILM</figcaption>
+      </figure>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>BEAUTY <b>◆</b> JEWELRY <b>◆</b> HOME <b>◆</b> FOOD <b>◆</b> PET <b>◆</b> SHORT-FORM PRODUCT FILMS <b>◆</b> </span>
+        <span>BEAUTY <b>◆</b> JEWELRY <b>◆</b> HOME <b>◆</b> FOOD <b>◆</b> PET <b>◆</b> SHORT-FORM PRODUCT FILMS <b>◆</b> </span>
+      </div>
+    </div>
+
+    <section id="work" class="shell" aria-labelledby="work-title">
+      <header class="section-head">
+        <div class="section-number">01 / SELECTED WORK</div>
+        <div>
+          <h2 id="work-title">Eight ways to make a product hold the frame.</h2>
+          <p>Concept-led films spanning texture, craft, utility, atmosphere and unboxing. Tap any film to watch.</p>
+        </div>
+      </header>
+
+      <div class="work-grid">
+        <article class="film">
+          <div class="film-visual">
+            <video playsinline preload="none" poster="assets/posters/poster-02.jpg" aria-label="Play Jewelry Craftsmanship film" data-src="assets/videos/work-02.mp4"></video>
+            <button class="play" type="button" aria-label="Play Jewelry Craftsmanship"><span class="play-mark">PLAY FILM</span></button>
+          </div>
+          <div class="film-meta"><div><h3>Jewelry Craftsmanship</h3><p>Process · Detail · Luxury</p></div><span class="film-index">01</span></div>
+        </article>
+        <article class="film">
+          <div class="film-visual">
+            <video playsinline preload="none" poster="assets/posters/poster-03.jpg" aria-label="Play Skincare Texture film" data-src="assets/videos/work-03.mp4"></video>
+            <button class="play" type="button" aria-label="Play Skincare Texture"><span class="play-mark">PLAY FILM</span></button>
+          </div>
+          <div class="film-meta"><div><h3>Skincare Texture</h3><p>Texture · Ritual · Sensory</p></div><span class="film-index">02</span></div>
+        </article>
+        <article class="film">
+          <div class="film-visual">
+            <video playsinline preload="none" poster="assets/posters/poster-04.jpg" aria-label="Play Pet Unboxing film" data-src="assets/videos/work-04.mp4"></video>
+            <button class="play" type="button" aria-label="Play Pet Unboxing"><span class="play-mark">PLAY FILM</span></button>
+          </div>
+          <div class="film-meta"><div><h3>Pet Unboxing</h3><p>Discovery · Character · Joy</p></div><span class="film-index">03</span></div>
+        </article>
+        <article class="film">
+          <div class="film-visual">
+            <video playsinline preload="none" poster="assets/posters/poster-05.jpg" aria-label="Play Chocolate film" data-src="assets/videos/work-05.mp4"></video>
+            <button class="play" type="button" aria-label="Play Chocolate"><span class="play-mark">PLAY FILM</span></button>
+          </div>
+          <div class="film-meta"><div><h3>Chocolate</h3><p>Food · Mood · Indulgence</p></div><span class="film-index">04</span></div>
+        </article>
+        <article class="film">
+          <div class="film-visual">
+            <video playsinline preload="none" poster="assets/posters/poster-06.jpg" aria-label="Play Candle Lifestyle film" data-src="assets/videos/work-06.mp4"></video>
+            <button class="play" type="button" aria-label="Play Candle Lifestyle"><span class="play-mark">PLAY FILM</span></button>
+          </div>
+          <div class="film-meta"><div><h3>Candle Lifestyle</h3><p>Home · Atmosphere · Ritual</p></div><span class="film-index">05</span></div>
+        </article>
+        <article class="film">
+          <div class="film-visual">
+            <video playsinline preload="none" poster="assets/posters/poster-07.jpg" aria-label="Play Mini Vacuum Demo film" data-src="assets/videos/work-07.mp4"></video>
+            <button class="play" type="button" aria-label="Play Mini Vacuum Demo"><span class="play-mark">PLAY FILM</span></button>
+          </div>
+          <div class="film-meta"><div><h3>Mini Vacuum Demo</h3><p>Utility · Demo · Clarity</p></div><span class="film-index">06</span></div>
+        </article>
+        <article class="film">
+          <div class="film-visual">
+            <video playsinline preload="none" poster="assets/posters/poster-08.jpg" aria-label="Play Niche Perfume Ad film" data-src="assets/videos/work-08.mp4"></video>
+            <button class="play" type="button" aria-label="Play Niche Perfume Ad"><span class="play-mark">PLAY FILM</span></button>
+          </div>
+          <div class="film-meta"><div><h3>Niche Perfume Ad</h3><p>Fragrance · Luxury · Atmosphere</p></div><span class="film-index">07</span></div>
+        </article>
+        <article class="film film--landscape">
+          <div class="film-visual">
+            <video playsinline preload="none" poster="assets/posters/poster-09.jpg" aria-label="Play Coffee Spec Teaser film" data-src="assets/videos/work-09.mp4"></video>
+            <button class="play" type="button" aria-label="Play Coffee Spec Teaser"><span class="play-mark">PLAY FILM</span></button>
+          </div>
+          <div class="film-meta"><div><h3>Coffee Spec Teaser</h3><p>Spec Work / Concept Video<br>10s landscape spec cut</p></div><span class="film-index">08</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="services" class="offer" aria-labelledby="services-title">
+      <div class="shell">
+        <header class="section-head">
+          <div class="section-number">02 / SERVICES</div>
+          <div>
+            <h2 id="services-title">One product. A sharper reason to watch.</h2>
+            <p>Focused creative for launches, product pages and the feeds where first impressions happen fast.</p>
+          </div>
+        </header>
+        <div class="service-list">
+          <article class="service-row"><span class="num">01</span><h3>Product Films</h3><p>15–30s finished short films</p></article>
+          <article class="service-row"><span class="num">02</span><h3>Launch Visuals</h3><p>Creative built around a release</p></article>
+          <article class="service-row"><span class="num">03</span><h3>Social Assets</h3><p>Reels · TikTok · Shorts</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell audience" aria-labelledby="audience-title">
+      <div class="audience-copy">
+        <h2 id="audience-title">Built for small brands with a point of view.</h2>
+        <p>For indie and DTC teams across the US and UK that care about how the product feels on screen—not just whether it appears there.</p>
+        <div class="sector-list" aria-label="Sectors"><span>Beauty</span><span>Jewelry</span><span>Home</span><span>Food</span><span>Pet</span></div>
+      </div>
+    </section>
+
+    <section id="process" class="process shell" aria-labelledby="process-title">
+      <header class="section-head">
+        <div class="section-number">03 / PROCESS</div>
+        <div>
+          <h2 id="process-title">Four clear moves from brief to final file.</h2>
+          <p>Direction first. Production second. No effect for effect’s sake.</p>
+        </div>
+      </header>
+      <div class="steps">
+        <article class="step"><span class="num">01</span><h3>Brief</h3><p>Product, audience, objective and practical requirements.</p></article>
+        <article class="step"><span class="num">02</span><h3>Direction</h3><p>A visual route shaped around the product and brand.</p></article>
+        <article class="step"><span class="num">03</span><h3>Production</h3><p>Art direction, motion, edit and sound brought together.</p></article>
+        <article class="step"><span class="num">04</span><h3>Delivery</h3><p>Finished files prepared for the agreed placements.</p></article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="shell contact-grid">
+        <h2 id="contact-title">Have a product worth pausing for?</h2>
+        <div class="contact-side">
+          <p>Tell us about your product, your goal and what you need—we’ll shape the scope from there.</p>
+          <a class="email-link" href="mailto:yan2003105@gmail.com?subject=Morrow%20Studio%20project%20inquiry">yan2003105@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <p>Films shown are spec / concept work. Not commissioned by or affiliated with any brand pictured.</p>
+    <p><a href="mailto:yan2003105@gmail.com">Morrow Studio</a></p>
+  </footer>
+
+  <audio id="ambient" preload="none" loop src="assets/audio/ambient.mp3"></audio>
+  <button class="sound-toggle" id="soundToggle" type="button" aria-label="Turn ambient sound on" aria-pressed="false">
+    <span class="sound-icon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+  </button>
+
+  <script>
+    (function () {
+      var films = document.querySelectorAll('.film');
+      var ambient = document.getElementById('ambient');
+      var soundToggle = document.getElementById('soundToggle');
+      ambient.volume = 0.22;
+
+      function setAmbientState(isOn) {
+        soundToggle.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+        soundToggle.setAttribute('aria-label', isOn ? 'Turn ambient sound off' : 'Turn ambient sound on');
+      }
+
+      ambient.addEventListener('play', function () { setAmbientState(true); });
+      ambient.addEventListener('pause', function () { setAmbientState(false); });
+      ambient.addEventListener('error', function () { setAmbientState(false); });
+
+      soundToggle.addEventListener('click', function () {
+        var isOn = soundToggle.getAttribute('aria-pressed') === 'true';
+        if (isOn) {
+          ambient.pause();
+        } else {
+          var audioPromise = ambient.play();
+          if (audioPromise && typeof audioPromise.then === 'function') {
+            audioPromise.catch(function () { setAmbientState(false); });
+          }
+        }
+      });
+
+      function stopOthers(current) {
+        films.forEach(function (film) {
+          var video = film.querySelector('video');
+          var button = film.querySelector('.play');
+          if (video !== current && !video.paused) {
+            video.pause();
+            button.hidden = false;
+          }
+        });
+      }
+
+      films.forEach(function (film) {
+        var video = film.querySelector('video');
+        var button = film.querySelector('.play');
+
+        button.addEventListener('click', function () {
+          stopOthers(video);
+          if (!video.getAttribute('src')) {
+            video.setAttribute('src', video.getAttribute('data-src'));
+            video.load();
+          }
+          video.controls = true;
+          var playPromise = video.play();
+          if (playPromise && typeof playPromise.then === 'function') {
+            playPromise.then(function () { button.hidden = true; }).catch(function () { button.hidden = false; });
+          } else {
+            button.hidden = true;
+          }
+        });
+
+        video.addEventListener('pause', function () {
+          if (!video.ended) button.hidden = false;
+        });
+        video.addEventListener('play', function () {
+          stopOthers(video);
+          if (!ambient.paused) ambient.pause();
+          button.hidden = true;
+        });
+        video.addEventListener('ended', function () {
+          button.hidden = false;
+          video.controls = false;
+          video.removeAttribute('src');
+          video.load();
+        });
+      });
+    }());
+  </script>
+</body>
+</html>
