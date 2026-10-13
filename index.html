@@ -426,6 +426,29 @@
       transition: color .22s ease, background-color .22s ease;
     }
     .email-link:hover, .email-link:focus-visible { color: var(--signal-ink); background: transparent; }
+    .quote-form { display: grid; gap: 14px; }
+    .quote-form label { display: grid; gap: 6px; font: 500 .72rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .quote-form input, .quote-form textarea {
+      width: 100%;
+      background: transparent;
+      border: 1px solid rgba(11,11,8,.45);
+      color: var(--signal-ink);
+      padding: 12px 14px;
+      font: 400 .95rem/1.5 var(--display);
+      border-radius: 0;
+    }
+    .quote-form input:focus-visible, .quote-form textarea:focus-visible { outline: 2px solid var(--signal-ink); outline-offset: -2px; }
+    .quote-form textarea { min-height: 96px; resize: vertical; }
+    .quote-form button {
+      background: var(--signal-ink); color: var(--signal);
+      border: 1px solid var(--signal-ink);
+      padding: 16px 20px;
+      font: 500 .85rem/1 var(--mono);
+      cursor: pointer;
+      transition: color .22s ease, background-color .22s ease;
+    }
+    .quote-form button:hover, .quote-form button:focus-visible { background: transparent; color: var(--signal-ink); }
+    .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; }
 
     .quote-link {
       display: inline-block;
@@ -575,7 +598,7 @@
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
     <a href="#process">Process</a>
-    <a class="start-link" href="mailto:hello@morrowstudio.dpdns.org?subject=Project%20quote%20request&amp;body=Hi%20Morrow%20Studio%2C%0D%0A%0D%0AMy%20product%3A%20%0D%0AWhat%20I%20need%3A%20%0D%0AMy%20timeline%3A%20%0D%0A%0D%0AThanks%21">Get a Project Quote</a>
+    <a class="start-link" href="#contact">Get a Project Quote</a>
   </nav>
 
   <main>
@@ -720,7 +743,7 @@
           <p>A 15–20 second vertical product film, delivered within 5 business days of receiving your confirmed brief and required assets.</p>
           <p>Includes 1 revision round.</p>
           <p>Live-action shoots, complex animation and multi-version packages are quoted separately.</p>
-          <p><a class="quote-link" href="mailto:hello@morrowstudio.dpdns.org?subject=Project%20quote%20request&amp;body=Hi%20Morrow%20Studio%2C%0D%0A%0D%0AMy%20product%3A%20%0D%0AWhat%20I%20need%3A%20%0D%0AMy%20timeline%3A%20%0D%0A%0D%0AThanks%21">Get a Project Quote</a></p>
+          <p><a class="quote-link" href="#contact">Get a Project Quote</a></p>
         </div>
       </header>
     </section>
@@ -730,8 +753,33 @@
         <h2 id="contact-title">Have a product worth pausing for?</h2>
         <div class="contact-side">
           <p>Tell us about your product, your goal and what you need—we’ll shape the scope from there.</p>
-          <a class="email-link" href="mailto:hello@morrowstudio.dpdns.org?subject=Project%20quote%20request&amp;body=Hi%20Morrow%20Studio%2C%0D%0A%0D%0AMy%20product%3A%20%0D%0AWhat%20I%20need%3A%20%0D%0AMy%20timeline%3A%20%0D%0A%0D%0AThanks%21">Get a Project Quote</a>
-          <p class="price">Product films from $150 · hello@morrowstudio.dpdns.org</p>
+          <form class="quote-form" action="https://formsubmit.co/hello@morrowstudio.dpdns.org" method="POST">
+            <label>Your name
+              <input type="text" name="name" required autocomplete="name">
+            </label>
+            <label>Email
+              <input type="email" name="email" required autocomplete="email">
+            </label>
+            <label>Brand name
+              <input type="text" name="brand" required>
+            </label>
+            <label>Product link
+              <input type="url" name="product_link" placeholder="https://">
+            </label>
+            <label>What do you need?
+              <textarea name="need" required placeholder="e.g. A 15–20s vertical film for our new launch"></textarea>
+            </label>
+            <label>Timeline
+              <input type="text" name="timeline" placeholder="e.g. Within 2 weeks">
+            </label>
+            <input type="hidden" name="_subject" value="New quote request — Morrow Studio">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Morrow Studio — we've received your quote request and will get back to you within 2 business days. — Morrow Studio">
+            <button type="submit">Request a Quote</button>
+          </form>
+          <p class="price">Prefer email? <a href="mailto:hello@morrowstudio.dpdns.org?subject=Project%20quote%20request">hello@morrowstudio.dpdns.org</a> · Product films from $150</p>
         </div>
       </div>
     </section>
