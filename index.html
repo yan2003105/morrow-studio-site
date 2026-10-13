@@ -449,6 +449,10 @@
     }
     .quote-form button:hover, .quote-form button:focus-visible { background: transparent; color: var(--signal-ink); }
     .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; }
+    .faq-list { display: grid; gap: 0; border-top: 1px solid var(--line); margin-top: 34px; }
+    .faq-item { display: grid; gap: 8px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .faq-item h3 { font-size: 1.05rem; font-weight: 500; letter-spacing: -.01em; }
+    .faq-item p { color: var(--muted); max-width: 62ch; line-height: 1.65; }
 
     .quote-link {
       display: inline-block;
@@ -746,6 +750,23 @@
           <p><a class="quote-link" href="#contact">Get a Project Quote</a></p>
         </div>
       </header>
+    </section>
+
+    <section id="faq" class="shell" aria-labelledby="faq-title">
+      <header class="section-head">
+        <div class="section-number">05 / FAQ</div>
+        <div>
+          <h2 id="faq-title">Questions, answered.</h2>
+        </div>
+      </header>
+      <div class="faq-list">
+        <article class="faq-item"><h3>What do I receive?</h3><p>A finished 15–20 second vertical (9:16) film, delivered as MP4 — ready for Reels, TikTok, Shorts and your product page.</p></article>
+        <article class="faq-item"><h3>Do I need a live shoot?</h3><p>No. Our films are crafted without filming. Live-action shoots are quoted separately if you want one.</p></article>
+        <article class="faq-item"><h3>How many revisions are included?</h3><p>One revision round is included in every product film.</p></article>
+        <article class="faq-item"><h3>How long does it take?</h3><p>5 business days from your confirmed brief and required assets.</p></article>
+        <article class="faq-item"><h3>What do you need from me?</h3><p>Your confirmed brief and product/brand assets (photos, packaging, logo). We confirm the full list before production starts.</p></article>
+        <article class="faq-item"><h3>What payment methods do you accept?</h3><p>PayPal and bank transfer (USD). 50% deposit to start production, 50% on final delivery.</p></article>
+      </div>
     </section>
 
     <section id="contact" class="contact" aria-labelledby="contact-title">
